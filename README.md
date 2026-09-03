@@ -90,11 +90,13 @@ npm ci
 npm run dev
 ```
 
-手势模型、WASM 与 TFLite 文件直接从项目的 `public/mediapipe` 目录加载，不依赖 CDN 或 TFHub。
+`npm run dev` 会先通过跨平台 Node.js 脚本自动准备 MediaPipe 资源。手势模型、WASM 与 TFLite 文件随后从项目的 `public/mediapipe` 目录加载，不依赖 CDN、TFHub 或 Bash。
 
 ## GitHub Pages
 
 推送到 `main` 分支后，`.github/workflows/deploy-pages.yml` 会自动安装依赖、从锁定版本的 `@mediapipe/hands` 准备模型文件、执行静态导出并发布到 GitHub Pages。首次部署需要在仓库 **Settings → Pages → Build and deployment** 中将 Source 设为 **GitHub Actions**。
+
+仓库与 GitHub Pages 均为公开访问，不需要登录。真实手势模式通过 GitHub Pages 的 HTTPS 安全来源申请摄像头权限；访问者首次点击手势入口时，需要在浏览器中选择“允许”。
 
 ## 验证
 
